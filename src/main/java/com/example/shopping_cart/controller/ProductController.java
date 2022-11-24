@@ -1,8 +1,11 @@
 package com.example.shopping_cart.controller;
 
 import com.example.shopping_cart.product.Product;
+import com.example.shopping_cart.record.ProductReqyest;
 import com.example.shopping_cart.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Collection;
@@ -20,5 +23,8 @@ public class ProductController {
         return this.productService.getAllProducts();
     }
 
-    
+    @PostMapping("/store/order/add")
+    public Product createProduct(@RequestBody ProductReqyest productReqyest) {
+        return this.productService.addProduct(productReqyest);
+    }
 }
